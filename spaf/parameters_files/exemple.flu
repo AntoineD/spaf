@@ -1,0 +1,14 @@
+# This file contains the physical parameters for the fluid
+
+# Reynolds number, U * L / nu
+Reynolds = 50
+
+# Froude number, U^2 / ( g * L )
+Froude = 1
+
+# vector of direction of the gravity
+gravity_direction = 0 0 1
+
+# moving frame direction, can be 1, 2 or 3, a particle will be fixed
+# relatively to the mesh in this direction
+moving_frame_direction = 3

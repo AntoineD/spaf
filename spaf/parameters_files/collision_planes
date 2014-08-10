@@ -1,0 +1,6 @@
+#number of planes
+number = 1
+
+#planes equations as 0 = d + ax + by + cz, (a,b,c) is a normal vetor pointing inside the domain
+# the following plane is z=0
+plane = 0 0 0 1

@@ -1,0 +1,97 @@
+#------------------------------------------------------------------------------
+# Time discretisation
+#------------------------------------------------------------------------------
+section = time
+	# time step
+	dt = 0.005
+	# total number of time steps
+	time_step_number = 100
+section = end
+#------------------------------------------------------------------------------
+# Output
+#------------------------------------------------------------------------------
+section = output
+	# for all save_period_* parameters, a 0 value means no save at all
+	# number of time step before writing a checkpoint
+	save_period_checkpoint = 100
+	# number of time step before writing particles kinetic data
+	save_period_particles = 1
+	# number of time step before saving visualization data
+	save_period_fluid = 0
+	# number of time step before saving statitics data
+	save_period_stat = 1
+	# how precise to write data : float or double
+	# this only concerns visualization data and particle data, use double for debugging purposes
+	write_as_double = float
+	# how to write data : ascii or binary
+	# this only concerns visualization data and checkpoint data, use ascii for debugging purposes
+	write_in_binary = binary
+section = end
+#------------------------------------------------------------------------------
+# Conjugate gradient
+#------------------------------------------------------------------------------
+section = conjugate_gradient
+	# maximum number of iterations
+	iteration_max = 1000
+	# tolerance or convergence criterion
+	tolerance = 1.e-4
+section = end
+#------------------------------------------------------------------------------
+# Preconditioner
+#------------------------------------------------------------------------------
+section = preconditioner
+	# type of node reordering : identity, genmmd, md, mmd, amd
+	# see taucs manual for more informations
+	reordering = amd
+	# to use the default diagonal preconditioner : drop_tolerance = 0
+	# incomplete Choleski factorization droping tolerance : drop_tolerance > 0
+	# see taucs manual for more informations
+	drop_tolerance = 0
+section = end
+#------------------------------------------------------------------------------
+# Rigid body motion constraint
+#------------------------------------------------------------------------------
+section = rigid_body
+	# impose rigid motion pointwise or in L2 sense : choose pointwise or L2
+	setting = pointwise
+	# keep the angular velocity constant and egal to its initial value, false or true
+	fixed_angular_velocity = false
+section = end
+#------------------------------------------------------------------------------
+# Nearest neighbor search
+#------------------------------------------------------------------------------
+section = nearest_neighbor_search
+	# To use ANN, enter ann
+	# To use legacy, enter legacy min max round_off, where min, max and round_off define the voxel size
+	type = legacy 0 4 1.e-5
+section = end
+#------------------------------------------------------------------------------
+# Convection
+#------------------------------------------------------------------------------
+section = convection
+	# tolerance for a point to lie on the outlet plane
+	outlet_plane_tolerance = 1.e-6
+	# minimum substep coefficient allowed for the Lagrange convective sub-stepping
+	min_substep_coef = 1.e-6
+	# courant number limit over which bounding box searching is used
+	bb_search_courant_limit = 1
+	# same as above but only for the outer domain of the 2 domains version of spaf
+	# bb_search_courant_limit_o = 1
+section = end
+#------------------------------------------------------------------------------
+# Mesh search
+#------------------------------------------------------------------------------
+section = mesh_search
+	# maximum number of iterations for computing local coordinates of a point when element is non linear.
+	max_nb_of_iterations = 20
+	# Maximum number of element to search in, when searching for an element which contains a point.
+	max_nb_of_elements_to_search = 1500
+	# cutoff criterion for divergence of the Newton iteration for computing the local coordinates of a point
+	iterations_tolerance_max = 7
+	# Convergence criterion of the iteration for computing the local coordinates of a point.
+	iterations_tolerance_min = 1e-5
+	# Tolerance for the local coordinates of a point when checking if it is in a given element
+	coordinates_tolerance = 1e-4
+	# Minimum value of the determinant of the mapping from an element to the reference one.
+	min_determinant_value = 1e-8
+section = end

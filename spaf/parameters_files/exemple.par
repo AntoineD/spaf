@@ -1,0 +1,49 @@
+number = 1
+
+#------------------------------------------------------------------------------
+# collision parameters
+# un-comment this section to avoid collision
+#------------------------------------------------------------------------------
+section = collision
+   
+	# defines the distance under which collision is considered as true
+	threshold = 0.
+	
+	# what action to take when collision is detected, can be 'stop' or 'force'
+	# stop is the only one implemented, so no choice to make
+	# action_type = stop
+	
+	# if action is force, the following defines the number of sub steps to
+	# compute when applying the repulsion force, not implemented yet
+	# sub_step_number = 5
+section = end
+
+#------------------------------------------------------------------------------
+# Data defining a particle's parameters and initial conditions.
+# The number after particle is the particle's number.
+#------------------------------------------------------------------------------
+section = particle 1
+   
+	# density relative to fluid
+	density = 1
+   
+	# initial position
+	position = 0.5 0 0
+	
+	# initial velocity
+	velocity = 0 0 0.75
+   
+	# initial angular position, defined explicitely
+	# or by direction (no need to be of unit lentgh) and angle, in degrees.
+	angular_position = 0 0 0 # 0.
+   
+	# initial angular velocity
+   	angular_velocity = 0 0 0
+   
+  # this section defines the particle's shape,
+	# can be ellipsoid only
+	section = ellipsoid
+		semi_axes = .075 .075 .15
+	section = end
+   
+section = end
